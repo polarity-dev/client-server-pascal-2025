@@ -1,11 +1,17 @@
 const axios = require("axios")
 
-const main = async () => {
-    const responseA = await axios.get("http://localhost:3000/querystring?pippo=pluto&paperino=topolino")
-    console.log("Risposta A:", responseA.data)
+console.log("Prima chiamata")
 
-    const responseB = await axios.get("http://localhost:3000/pathparams/ciao/mondo")
-    console.log("Risposta B:", responseB.data)
-}
+axios
+    .get("http://localhost:3000/querystring?pippo=pluto&paperino=topolino")
+    .then(response => {
+        console.log("Risposta 1")
+    })
 
-main()
+console.log("Seconda chiamata")
+
+axios
+    .get("http://localhost:3000/pathparams/10/20")
+    .then(response => {
+        console.log("Risposta 2")
+    })
